@@ -72,7 +72,7 @@ vector<string> split(const string& s, char delimiter) {
 // --- GESTIONARE FISIERE (CSV) ---
 
 void loadData() {
-    ifstream fBooks("C:/Users/teban/source/repos/map/data/books.csv");
+    ifstream fBooks("data/books.csv");
     string line;
     while (getline(fBooks, line)) {
         vector<string> d = split(line, ',');
@@ -80,7 +80,7 @@ void loadData() {
             books.push_back({ stoi(d[0]), d[1], d[2], d[3], d[4] == "1" });
     }
 
-    ifstream fUsers("C:/Users/teban/source/repos/map/data/users.csv");
+    ifstream fUsers("data/users.csv");
     while (getline(fUsers, line)) {
         vector<string> d = split(line, ',');
         if (d.size() >= 2)
@@ -91,14 +91,14 @@ void loadData() {
 }
 
 void saveBooks() {
-    ofstream f("C:/Users/teban/source/repos/map/data/books.csv");
+    ofstream f("data/books.csv");
     for (auto& b : books) {
         f << b.id << "," << b.title << "," << b.author << "," << b.isbn << "," << (b.isAvailable ? "1" : "0") << "\n";
     }
 }
 
 void saveUsers() {
-    ofstream f("C:/Users/teban/source/repos/map/data/users.csv");
+    ofstream f("data/users.csv");
     for (auto& u : users) {
         f << u.id << "," << u.name << "\n";
     }
